@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core System Colors */
+    --color-background: #FAFBFC; /* gray-50 */
+    --color-foreground: #0F172A; /* slate-900 */
+    --color-border: rgba(148, 163, 184, 0.2); /* slate-400 with opacity */
+    --color-input: #FFFFFF; /* white */
+    --color-ring: #1E40AF; /* blue-800 */
+    
+    /* Card & Surface Colors */
+    --color-card: #FFFFFF; /* white */
+    --color-card-foreground: #0F172A; /* slate-900 */
+    --color-popover: #FFFFFF; /* white */
+    --color-popover-foreground: #0F172A; /* slate-900 */
+    
+    /* Muted Colors */
+    --color-muted: #F1F5F9; /* slate-100 */
+    --color-muted-foreground: #475569; /* slate-600 */
+    
+    /* Primary Brand Colors */
+    --color-primary: #1E40AF; /* blue-800 */
+    --color-primary-foreground: #FFFFFF; /* white */
+    
+    /* Secondary Colors */
+    --color-secondary: #64748B; /* slate-500 */
+    --color-secondary-foreground: #FFFFFF; /* white */
+    
+    /* Accent Colors */
+    --color-accent: #F59E0B; /* amber-500 */
+    --color-accent-foreground: #FFFFFF; /* white */
+    
+    /* State Colors */
+    --color-success: #059669; /* emerald-600 */
+    --color-success-foreground: #FFFFFF; /* white */
+    
+    --color-warning: #DC6803; /* orange-600 */
+    --color-warning-foreground: #FFFFFF; /* white */
+    
+    --color-error: #DC2626; /* red-600 */
+    --color-error-foreground: #FFFFFF; /* white */
+    
+    --color-destructive: #DC2626; /* red-600 */
+    --color-destructive-foreground: #FFFFFF; /* white */
+    
+    /* Financial Specific Colors */
+    --color-profit: #059669; /* emerald-600 */
+    --color-loss: #DC2626; /* red-600 */
+    --color-neutral: #64748B; /* slate-500 */
+    
+    /* Shadow Variables */
+    --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-modal: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-elevation: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Typography Base Styles */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  
+  .font-data {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+  
+  /* Animation Base */
+  * {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer components {
+  /* Trading Platform Specific Components */
+  .trading-card {
+    @apply bg-card border border-border rounded-lg shadow-[var(--shadow-card)] p-4;
+  }
+  
+  .risk-indicator {
+    @apply inline-flex items-center justify-center rounded-full text-xs font-medium px-2 py-1;
+  }
+  
+  .risk-indicator.high {
+    @apply bg-error text-error-foreground;
+  }
+  
+  .risk-indicator.medium {
+    @apply bg-warning text-warning-foreground;
+  }
+  
+  .risk-indicator.low {
+    @apply bg-success text-success-foreground;
+  }
+  
+  .data-cell {
+    @apply font-data text-sm tabular-nums;
+  }
+  
+  .profit {
+    @apply text-[var(--color-profit)];
+  }
+  
+  .loss {
+    @apply text-[var(--color-loss)];
+  }
+  
+  .neutral {
+    @apply text-[var(--color-neutral)];
+  }
+}
+
+@layer utilities {
+  /* Custom Animation Utilities */
+  .animate-pulse-slow {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .transition-micro {
+    transition-duration: 150ms;
+  }
+  
+  .transition-standard {
+    transition-duration: 200ms;
+  }
+  
+  /* Financial Data Utilities */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+  
+  .backdrop-blur-trading {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
